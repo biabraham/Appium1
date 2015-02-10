@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="48967" started-at="2015-02-04T18:40:48Z" finished-at="2015-02-04T18:41:37Z">
+  <suite name="Default suite" duration-ms="45946" started-at="2015-02-10T21:50:19Z" finished-at="2015-02-10T21:51:05Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="48967" started-at="2015-02-04T18:40:48Z" finished-at="2015-02-04T18:41:37Z">
-      <class name="com.appiumlearning.pageobjectmodeltests.LoginEriBank">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.appiumlearning.pageobjectmodeltests.LoginEriBank@163e9ab]" name="setUp" is-config="true" duration-ms="21135" started-at="2015-02-04T10:40:48Z" finished-at="2015-02-04T10:41:10Z">
+    <test name="Default test" duration-ms="45946" started-at="2015-02-10T21:50:19Z" finished-at="2015-02-10T21:51:05Z">
+      <class name="com.appiumlearning.pageobjectmodeltests.TestSendMoney">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.appiumlearning.pageobjectmodeltests.TestSendMoney@140d5f0]" name="setUp" is-config="true" duration-ms="5794" started-at="2015-02-10T13:50:19Z" finished-at="2015-02-10T13:50:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="loginToEriBank()[pri:0, instance:com.appiumlearning.pageobjectmodeltests.LoginEriBank@163e9ab]" name="loginToEriBank" duration-ms="23429" started-at="2015-02-04T10:41:10Z" finished-at="2015-02-04T10:41:33Z">
+        <test-method status="PASS" signature="loginToEriBank()[pri:0, instance:com.appiumlearning.pageobjectmodeltests.TestSendMoney@140d5f0]" name="loginToEriBank" duration-ms="39395" started-at="2015-02-10T13:50:25Z" finished-at="2015-02-10T13:51:04Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginToEriBank -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.appiumlearning.pageobjectmodeltests.LoginEriBank@163e9ab]" name="tearDown" is-config="true" duration-ms="4392" started-at="2015-02-04T10:41:33Z" finished-at="2015-02-04T10:41:37Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.appiumlearning.pageobjectmodeltests.TestSendMoney@140d5f0]" name="tearDown" is-config="true" duration-ms="739" started-at="2015-02-10T13:51:04Z" finished-at="2015-02-10T13:51:05Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.appiumlearning.pageobjectmodeltests.LoginEriBank -->
+      </class> <!-- com.appiumlearning.pageobjectmodeltests.TestSendMoney -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

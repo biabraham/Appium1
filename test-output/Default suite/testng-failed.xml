@@ -3,12 +3,13 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.appiumlearning.test.AppiumTests.OpenEriBankApp">
+      <class name="com.appiumlearning.pageobjectmodeltests.TestSendMoney">
         <methods>
-          <include name="openEriBankApp"/>
-          <include name="quit"/>
+          <include name="setUp"/>
+          <include name="loginToEriBank"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- com.appiumlearning.test.AppiumTests.OpenEriBankApp -->
+      </class> <!-- com.appiumlearning.pageobjectmodeltests.TestSendMoney -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

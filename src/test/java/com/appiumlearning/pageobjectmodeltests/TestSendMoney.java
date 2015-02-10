@@ -8,6 +8,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
@@ -19,22 +20,23 @@ import com.eribank.pages.HomePage;
 import com.eribank.pages.LoginPage;
 import com.eribank.pages.SendPaymentPage;
 
-public class LoginEriBank {
+public class TestSendMoney {
 	
 	private AndroidDriver driver;
 	
 	@BeforeClass
 	public void setUp(){
-		File app = new File("C:\\Bibin\\Workspace\\ApkFiles\\com.experitest.ExperiBank-1.apk");
+		File app = new File("C:\\Bibin\\Workspace\\ApkFiles\\eriBank\\com.experitest.ExperiBank-1.apk");
 		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability("browser", "Android");
 		capabilities.setCapability("deviceName", "Nexus 5");
 		capabilities.setCapability("platformVersion", "4.4.2");
 		//capabilities.setCapability("platformVersion", "5.0.1");
 		capabilities.setCapability("platformName", "Android");
 		capabilities.setCapability("app", app.getAbsolutePath());
 		try {
-			//driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-			driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+			
+			driver = new AndroidDriver(new URL("http://127.0.0.1:4444/wd/hub"), capabilities);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -48,21 +50,18 @@ public class LoginEriBank {
 	@Test
 	public void loginToEriBank(){
 		
-		LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
-		//PageFactory.initElements(new AppiumFieldDecorator(driver, 15,TimeUnit.SECONDS), loginPage);
-		AppiumUtils.decoratePage(driver, loginPage);
+		System.out.println("Initiating the transfer");
 		
-		//LoginPage loginPage = PageFactory.initElements((driver), LoginPage.class);
+		LoginPage loginPage = new LoginPage(driver);
+		
 		HomePage homePage = loginPage.login("company", "company");
-		AppiumUtils.decoratePage(driver, homePage);
 		
-		//String balance = homePage.getBalanceInHomePage();
-		//System.out.println("Initial Balance is - "+balance);
 		SendPaymentPage sendPaymentPage = homePage.clickOnMakePaymentButton();
-		AppiumUtils.decoratePage(driver, sendPaymentPage);
-		sendPaymentPage.sendMoneySuccess("4086638892", "geena", "0.01", "Italy");
 		
-		//System.out.println("Balance after transfer is -"+homePage.getBalanceInHomePage());
+		sendPaymentPage.sendMoneySuccess("4086638892", "Bibin", "0.01", "Norway");
+		
+		System.out.println("completed the transfer");
+		
 		
 	}
 	

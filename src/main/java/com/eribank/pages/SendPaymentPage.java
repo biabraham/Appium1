@@ -1,16 +1,24 @@
 package com.eribank.pages;
 
+import io.appium.java_client.MobileDriver;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import com.appiumlearning.util.AppiumUtils;
 
 public class SendPaymentPage {
 	
-	private AndroidDriver driver;
+	private WebDriver driver;
 	
 	@AndroidFindBy(uiAutomator = "UiSelector().text(\"Phone\")")
 	private WebElement phoneTextField;
@@ -36,9 +44,13 @@ public class SendPaymentPage {
 	@AndroidFindBy(uiAutomator = "UiSelector().resourceId(\"android:id/content\")")
 	private WebElement sendMoneyConfirmFrame;
 	
+	@FindBy(id = "com.experitest.ExperiBank:id/amount")
+	private WebElement amountSeekBar;
 	
-	public SendPaymentPage(AndroidDriver driver) {
+	
+	public SendPaymentPage(WebDriver driver) {
 		this.driver = driver;
+		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
 	}
 	
 	public void enterPhoneNumber(String phoneNumber){
@@ -51,6 +63,17 @@ public class SendPaymentPage {
 	
 	public void enterAmount(String amount){
 		amountTextField.sendKeys(amount);
+	}
+	
+	public void setAmount() throws InterruptedException{
+		//TouchAction touchAction = new TouchAction((MobileDriver) driver);
+		Point upperLeft = amountSeekBar.getLocation();
+		Dimension dimensions = amountSeekBar.getSize();
+		Point newSliderLocation = new Point((upperLeft.getX()+dimensions.getWidth()/5),upperLeft.getY()+(dimensions.getHeight()/2));
+		AndroidDriver dr = (AndroidDriver) driver;
+		dr.swipe(newSliderLocation.getX(),newSliderLocation.getY(), newSliderLocation.getX()-110, newSliderLocation.getY(), 2000);
+		//touchAction.moveTo(amountSeekBar).perform();
+		Thread.sleep(5000);
 	}
 	
 	public CountrySelectionPage clickSelectButton(){
@@ -80,7 +103,13 @@ public class SendPaymentPage {
 	public HomePage sendMoneySuccess(String phoneNumber, String name, String amount, String country){
 		enterPhoneNumber(phoneNumber);
 		enterName(name);
-		enterAmount(amount);
+		//enterAmount(amount);
+		try {
+			setAmount();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		CountrySelectionPage countrySelectionPage = clickSelectButton();
 		AppiumUtils.decoratePage(driver, countrySelectionPage);
 		countrySelectionPage.selectCountry(country);
