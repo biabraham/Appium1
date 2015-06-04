@@ -26,7 +26,7 @@ public class OpenEriBankApp {
 		/*capabilities.setCapability("deviceName", "etouch tablet");
 		capabilities.setCapability("platformVersion", "4.2.2");*/
 		
-		capabilities.setCapability("deviceName", "sim1");
+		capabilities.setCapability("deviceName", "Nexus_5");
 		capabilities.setCapability("platformVersion", "5.0.1");
 		
 		capabilities.setCapability("platformName", "Android");
